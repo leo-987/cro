@@ -26,7 +26,7 @@ class CRO:
     """
     optimal = None  # A Molecule object represent the optimal solution
     cnt = 0
-    limit = 10000
+    limit = 1000
     KELossRate = 0.2
     mole_coll = 0.2
     alpha = 100
@@ -35,7 +35,7 @@ class CRO:
     init_ke = 100
     pop = []
 
-    def __init__(self, fit_func, structure):
+    def __init__(self, structure):
         """
         * fit_func: Object function
         * structure: Initial solution list [s1, s2, ..., sn]
@@ -43,9 +43,8 @@ class CRO:
         for s in structure:
             self.pop.append(Molecule(s))
 
-        self.fit_func = fit_func
-
         for mol in self.pop:
+            # You should implement this function in your derived class
             mol.pe = self.fit_func(mol)
             mol.ke = self.init_ke
             mol.update()

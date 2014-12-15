@@ -11,7 +11,7 @@ class Test(CRO):
     Note that every copy operation is deep-copy.
     """
     def __init__(self, structure):
-        CRO.__init__(self, self.fit_func, structure)
+        CRO.__init__(self, structure)
 
     def wall(self, m):
         new = copy.deepcopy(m)
@@ -46,6 +46,7 @@ class Test(CRO):
             return math.sin(m.structure[0]) + math.cos(m.structure[1])
 
 
+# List of initial solutions: [[x1, y1], [x2, y2], [x3, y3]]
 s = [[random.random(), random.random()] for i in range(10)]
 cro = Test(s)
 cro.run()
